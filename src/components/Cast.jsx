@@ -12,7 +12,7 @@ const Cast = () => {
     getMovieDetailsActor(movieDetailsId)
       .then(res => setCast(res))
       .catch(error => console.log(error));
-  }, []);
+  });
 
   return (
     <ul>
