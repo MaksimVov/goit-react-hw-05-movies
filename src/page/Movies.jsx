@@ -30,7 +30,7 @@ const Movies = () => {
     <>
       <form action="" onSubmit={handleSubmit}>
         <input type="text" value={moviesId} onChange={updateQueryString} />
-        <button type="submit">Click</button>
+        <button type="submit">Search</button>
       </form>
       <MoviesQueryList moviesList={search} />
     </>
