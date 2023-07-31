@@ -7,7 +7,7 @@ import { SearchBar } from 'components/SearchBar';
 const Movies = () => {
   const [search, setSearch] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
-  const moviesId = searchParams.get('moviesId') ?? '';
+  const moviesId = searchParams.get('moviesId');
 
   const updateQueryString = e => {
     const moviesIdValue = e.target.value;
@@ -19,21 +19,24 @@ const Movies = () => {
 
   const handleSubmit = async (e, query) => {
     e.preventDefault();
-    setSearchParams({ moviesId: query });
+    setSearchParams({ query });
   };
 
   useEffect(() => {
+    if (!moviesId) {
+      return;
+    }
     try {
       getMoviesQuery(moviesId).then(res => setSearch(res));
     } catch (error) {
       console.error(error);
     }
-  }, [searchParams]);
+  }, [moviesId, searchParams]);
 
   return (
     <>
       <SearchBar
-        onHandleSubmit={handleSubmit}
+        onHandleSubmit={e => handleSubmit(e, moviesId)}
         onMoviesId={moviesId}
         onUpdateQueryString={updateQueryString}
       />
