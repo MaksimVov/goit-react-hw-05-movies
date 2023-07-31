@@ -10,7 +10,7 @@ const Reviews = () => {
     getMovieDetailsReviews(movieDetailsId)
       .then(res => setReviews(res))
       .catch(error => console.log(error));
-  });
+  }, [movieDetailsId]);
 
   return (
     <ul>

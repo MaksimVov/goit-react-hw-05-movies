@@ -1,7 +1,8 @@
 import { useSearchParams } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { getMoviesQuery } from 'services/getMovies';
 import { MoviesQueryList } from 'components/MoviesQueryList';
+import { SearchBar } from 'components/SearchBar';
 
 const Movies = () => {
   const [search, setSearch] = useState([]);
@@ -16,22 +17,26 @@ const Movies = () => {
     setSearchParams({ moviesId: moviesIdValue });
   };
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e, query) => {
     e.preventDefault();
-    try {
-      const moviesData = await getMoviesQuery(moviesId);
-      setSearch(moviesData);
-    } catch (error) {
-      console.error('Error fetching movies:', error);
-    }
+    setSearchParams({ moviesId: query });
   };
+
+  useEffect(() => {
+    try {
+      getMoviesQuery(moviesId).then(res => setSearch(res));
+    } catch (error) {
+      console.error(error);
+    }
+  }, [searchParams]);
 
   return (
     <>
-      <form action="" onSubmit={handleSubmit}>
-        <input type="text" value={moviesId} onChange={updateQueryString} />
-        <button type="submit">Search</button>
-      </form>
+      <SearchBar
+        onHandleSubmit={handleSubmit}
+        onMoviesId={moviesId}
+        onUpdateQueryString={updateQueryString}
+      />
       <MoviesQueryList moviesList={search} />
     </>
   );
