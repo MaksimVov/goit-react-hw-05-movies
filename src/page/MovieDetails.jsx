@@ -4,7 +4,7 @@ import { getMovieDetails } from 'services/getMovies';
 import styles from '../styles.module.css';
 
 const MovieDetails = () => {
-  const [movieDetails, setMovieDetails] = useState({});
+  const [movieDetails, setMovieDetails] = useState(null);
   const { movieDetailsId } = useParams();
 
   const Location = useLocation();
@@ -17,6 +17,10 @@ const MovieDetails = () => {
       .catch(error => console.error('Error fetching movie details:', error));
   }, [movieDetailsId]);
 
+  if (!movieDetails) {
+    return;
+  }
+
   const { poster_path, original_title, overview, genres } = movieDetails;
 
   return (
@@ -27,7 +31,11 @@ const MovieDetails = () => {
       <div className={styles.movieDetails}>
         <img
           className={styles.movieDetailsImg}
-          src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+          src={
+            poster_path
+              ? `https://image.tmdb.org/t/p/w500${poster_path}`
+              : `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2MQQS_knNjQPkLzTyixP5F51QTPzXcOU6VkpoAPAe9Q&s`
+          }
           alt=""
         />
         <div>

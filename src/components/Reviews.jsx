@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getMovieDetailsReviews } from 'services/getMovies';
 
 const Reviews = () => {
-  const [Reviews, setReviews] = useState([]);
+  const [Reviews, setReviews] = useState(null);
   const { movieDetailsId } = useParams();
 
   useEffect(() => {
@@ -11,6 +11,10 @@ const Reviews = () => {
       .then(res => setReviews(res))
       .catch(error => console.log(error));
   }, [movieDetailsId]);
+
+  if (!Reviews) {
+    return;
+  }
 
   return (
     <ul>

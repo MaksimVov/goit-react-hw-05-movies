@@ -5,7 +5,7 @@ import { getMovieDetailsActor } from 'services/getMovies';
 import styles from '../styles.module.css';
 
 const Cast = () => {
-  const [Cast, setCast] = useState([]);
+  const [Cast, setCast] = useState(null);
   const { movieDetailsId } = useParams();
 
   useEffect(() => {
@@ -14,6 +14,9 @@ const Cast = () => {
       .catch(error => console.log(error));
   }, [movieDetailsId]);
 
+  if (!Cast) {
+    return;
+  }
   return (
     <ul>
       {Cast.length > 0
