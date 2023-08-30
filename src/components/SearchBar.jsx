@@ -1,11 +1,62 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 
-export const SearchBar = ({ onSubmit, onValue }) => {
+// export const SearchBar = ({ onSubmit }) => {
+//   const [query, setQuery] = useState('');
+
+//   const handleChange = e => {
+//     const queryToFetch = e.target.value;
+
+//     setQuery(queryToFetch);
+//   };
+
+//   const handleSubmit = e => {
+//     e.preventDefault();
+
+//     if (!query) {
+//       return;
+//     }
+//     onSubmit(query);
+//   };
+
+//   return (
+//     <form action="" onSubmit={handleSubmit}>
+//       <input type="text" onChange={handleChange} value={query} />
+//       <button type="submit">Search</button>
+//     </form>
+//   );
+// };
+import React, { useState } from 'react';
+import { styled } from '@mui/system';
+
+const SearchForm = styled('form')({
+  display: 'flex',
+  alignItems: 'center',
+  gap: '10px',
+});
+
+const SearchInput = styled('input')({
+  padding: '8px',
+  border: '1px solid #ccc',
+  borderRadius: '4px',
+});
+
+const SearchButton = styled('button')({
+  padding: '8px 16px',
+  background: '#E50914',
+  color: 'white',
+  border: 'none',
+  borderRadius: '4px',
+  cursor: 'pointer',
+  '&:hover': {
+    background: '#C90813',
+  },
+});
+
+export const SearchBar = ({ onSubmit }) => {
   const [query, setQuery] = useState('');
 
   const handleChange = e => {
     const queryToFetch = e.target.value;
-
     setQuery(queryToFetch);
   };
 
@@ -19,9 +70,13 @@ export const SearchBar = ({ onSubmit, onValue }) => {
   };
 
   return (
-    <form action="" onSubmit={handleSubmit}>
-      <input type="text" value={onValue} onChange={handleChange} />
-      <button type="submit">Search</button>
-    </form>
+    <SearchForm
+      style={{ marginBottom: '20px' }}
+      action=""
+      onSubmit={handleSubmit}
+    >
+      <SearchInput type="text" onChange={handleChange} value={query} />
+      <SearchButton type="submit">Search</SearchButton>
+    </SearchForm>
   );
 };
