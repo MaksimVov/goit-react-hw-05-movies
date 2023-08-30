@@ -1,30 +1,3 @@
-// import { Link } from 'react-router-dom';
-// import { useLocation } from 'react-router-dom';
-
-// export const MoviesQueryList = ({ moviesList }) => {
-//   const location = useLocation();
-//   return (
-//     <>
-//       {moviesList && (
-//         <ul>
-//           {moviesList.map(({ title, name, id, poster_path }) => (
-//             <li key={id}>
-//               <Link to={`/movies/${id}`} state={{ from: location }}>
-//                 <img
-//                   width="200px"
-//                   height="300px"
-//                   src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-//                   alt=""
-//                 />
-//                 {title || name}
-//               </Link>
-//             </li>
-//           ))}
-//         </ul>
-//       )}
-//     </>
-//   );
-// };
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';

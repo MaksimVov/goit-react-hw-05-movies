@@ -1,30 +1,3 @@
-// import { useState } from 'react';
-
-// export const SearchBar = ({ onSubmit }) => {
-//   const [query, setQuery] = useState('');
-
-//   const handleChange = e => {
-//     const queryToFetch = e.target.value;
-
-//     setQuery(queryToFetch);
-//   };
-
-//   const handleSubmit = e => {
-//     e.preventDefault();
-
-//     if (!query) {
-//       return;
-//     }
-//     onSubmit(query);
-//   };
-
-//   return (
-//     <form action="" onSubmit={handleSubmit}>
-//       <input type="text" onChange={handleChange} value={query} />
-//       <button type="submit">Search</button>
-//     </form>
-//   );
-// };
 import React, { useState } from 'react';
 import { styled } from '@mui/system';
 
