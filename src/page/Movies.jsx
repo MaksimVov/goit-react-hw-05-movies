@@ -59,7 +59,11 @@ const Movies = () => {
           Explore Movies
         </Typography>
         <SearchBar onSubmit={handleSubmit} />
-        {totalResults ? <MoviesQueryList moviesList={allMovies} /> : <h1></h1>}
+        {totalResults !== 0 ? (
+          <MoviesQueryList moviesList={allMovies} />
+        ) : (
+          <Typography variant="h6">No movies found</Typography>
+        )}
 
         {showBtn && <LoadMoreBtn onClick={loadMoreBtn} />}
       </Container>

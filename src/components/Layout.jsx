@@ -1,12 +1,6 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Container,
-  CssBaseline,
-} from '@mui/material';
+import { AppBar, Toolbar, Container, CssBaseline } from '@mui/material';
 
 import { styled } from '@mui/system';
 
