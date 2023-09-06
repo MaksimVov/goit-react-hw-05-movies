@@ -62,7 +62,7 @@ const Movies = () => {
         {totalResults !== 0 ? (
           <MoviesQueryList moviesList={allMovies} />
         ) : (
-          <Typography variant="h6">No movies found</Typography>
+          <Typography variant="h6">No movies found!</Typography>
         )}
 
         {showBtn && <LoadMoreBtn onClick={loadMoreBtn} />}
